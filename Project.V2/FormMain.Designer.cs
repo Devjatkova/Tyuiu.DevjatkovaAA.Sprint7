@@ -30,8 +30,8 @@ namespace Project.V2
         private void InitializeComponent()
         {
             this.panelButton_DAA = new System.Windows.Forms.Panel();
-            this.panelFill_DAA = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
+            this.panelFill_DAA = new System.Windows.Forms.Panel();
             this.panelButton_DAA.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -40,19 +40,10 @@ namespace Project.V2
             this.panelButton_DAA.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(88)))), ((int)(((byte)(157)))));
             this.panelButton_DAA.Controls.Add(this.button1);
             this.panelButton_DAA.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelButton_DAA.Location = new System.Drawing.Point(0, 360);
+            this.panelButton_DAA.Location = new System.Drawing.Point(0, 397);
             this.panelButton_DAA.Name = "panelButton_DAA";
-            this.panelButton_DAA.Size = new System.Drawing.Size(1020, 216);
+            this.panelButton_DAA.Size = new System.Drawing.Size(1020, 179);
             this.panelButton_DAA.TabIndex = 0;
-            // 
-            // panelFill_DAA
-            // 
-            this.panelFill_DAA.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(235)))), ((int)(((byte)(253)))));
-            this.panelFill_DAA.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelFill_DAA.Location = new System.Drawing.Point(0, 0);
-            this.panelFill_DAA.Name = "panelFill_DAA";
-            this.panelFill_DAA.Size = new System.Drawing.Size(1020, 360);
-            this.panelFill_DAA.TabIndex = 1;
             // 
             // button1
             // 
@@ -67,6 +58,15 @@ namespace Project.V2
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // panelFill_DAA
+            // 
+            this.panelFill_DAA.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(235)))), ((int)(((byte)(253)))));
+            this.panelFill_DAA.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelFill_DAA.Location = new System.Drawing.Point(0, 0);
+            this.panelFill_DAA.Name = "panelFill_DAA";
+            this.panelFill_DAA.Size = new System.Drawing.Size(1020, 397);
+            this.panelFill_DAA.TabIndex = 1;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -76,7 +76,7 @@ namespace Project.V2
             this.Controls.Add(this.panelButton_DAA);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Сеть книжных магазинов";
+            this.Text = "Сеть продуктовых магазинов";
             this.panelButton_DAA.ResumeLayout(false);
             this.ResumeLayout(false);
 
