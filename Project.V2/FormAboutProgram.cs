@@ -10,12 +10,16 @@ using System.Windows.Forms;
 
 namespace Project.V2
 {
-    public partial class FormMain : Form
+    public partial class FormAboutProgram : Form
     {
-        public FormMain()
+        public FormAboutProgram()
         {
             InitializeComponent();
         }
 
+        private void buttonAboutProgramOk_DAA_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
