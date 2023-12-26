@@ -23,7 +23,6 @@ namespace Project.V2
 
         static int rows;
         static int columns;
-        //static string openFilePath;
         DataService ds = new DataService();
         public static string path = @"C:\Users\ДНС\source\repos\Tyuiu.DevjatkovaAA.Sprint7\Project.V2\bin\Debug\DataBase.csv";
 
@@ -67,9 +66,13 @@ namespace Project.V2
             dataGridViewMas_DAA.ColumnCount = columns;
             dataGridViewMas_DAA.RowCount = rows-1;
 
+            dataGridViewRes_DAA.ColumnCount = columns;
+            dataGridViewRes_DAA.RowCount = rows-1;
+
             for (int i = 0; i < columns; i++)
             {
                 dataGridViewMas_DAA.Columns[i].Width = 80;
+                dataGridViewRes_DAA.Columns[i].Width = 80;
             }
             
             for (int i = 0; i < rows; i++)
@@ -79,14 +82,21 @@ namespace Project.V2
                     if (i == 0)
                     {
                         dataGridViewMas_DAA.Columns[j].HeaderCell.Value = arrayValues[i, j];
+                        dataGridViewRes_DAA.Columns[j].HeaderCell.Value = arrayValues[i, j];
                     }
                     else
                     {
-                        dataGridViewMas_DAA.Rows[i-1].Cells[j].Value = arrayValues[i, j];
+                        dataGridViewMas_DAA.Rows[i - 1].Cells[j].Value = arrayValues[i, j];
                     }
                 }
             }
+            this.dataGridViewMas_DAA.Rows.Add("", "", "", "", "", "", "");
             buttonSaveFile_DAA.Enabled = true;
+            buttonAddRow_DAA.Enabled = true;
+            buttonGraf_DAA.Enabled = true;
+            buttonSearch_DAA.Enabled = true;
+            buttonSort_DAA.Enabled = true;
+            buttonStatRes_DAA.Enabled = true;
         }
 
         // сохранение файла
@@ -129,71 +139,71 @@ namespace Project.V2
             }
         }
 
-        // поиск, фильтрация
-        private void buttonSearch_DAA_Click(object sender, EventArgs e)
+        // фильтрация по слову
+        private void buttonSort_DAA_Click(object sender, EventArgs e)
         {
-            int rows = dataGridViewMas_DAA.RowCount -1;
+            int rows = dataGridViewMas_DAA.RowCount-1;
             int columns = dataGridViewMas_DAA.ColumnCount;
+            int num = Convert.ToInt32(textBoxSortNum_DAA.Text);
+
             try
             {
-                int num = Convert.ToInt32(textBoxSearchNum_DAA.Text);
-                // поиск по столбцу и слову
                 if (num >= 0 && num <= columns)
                 {
                     if (num == 0)
                     {
-                        for (int i = 0; i < rows ; i++)
+                        for (int i = 0; i < rows; i++)
                         {
-                            dataGridViewMas_DAA.Rows[i].Visible = dataGridViewMas_DAA[0, i].Value.ToString() == textBoxSearchWord_DAA.Text;
+                            dataGridViewMas_DAA.Rows[i].Visible = dataGridViewMas_DAA[0, i].Value.ToString() == textBoxSortWord_DAA.Text;
                         }
                     }
                     if (num == 1)
                     {
                         for (int i = 0; i < rows; i++)
                         {
-                            dataGridViewMas_DAA.Rows[i].Visible = dataGridViewMas_DAA[1, i].Value.ToString() == textBoxSearchWord_DAA.Text;
+                            dataGridViewMas_DAA.Rows[i].Visible = dataGridViewMas_DAA[1, i].Value.ToString() == textBoxSortWord_DAA.Text;
                         }
                     }
                     if (num == 2)
                     {
                         for (int i = 0; i < rows; i++)
                         {
-                            dataGridViewMas_DAA.Rows[i].Visible = dataGridViewMas_DAA[2, i].Value.ToString() == textBoxSearchWord_DAA.Text;
+                            dataGridViewMas_DAA.Rows[i].Visible = dataGridViewMas_DAA[2, i].Value.ToString() == textBoxSortWord_DAA.Text;
                         }
                     }
                     if (num == 3)
                     {
                         for (int i = 0; i < rows; i++)
                         {
-                            dataGridViewMas_DAA.Rows[i].Visible = dataGridViewMas_DAA[3, i].Value.ToString() == textBoxSearchWord_DAA.Text;
+                            dataGridViewMas_DAA.Rows[i].Visible = dataGridViewMas_DAA[3, i].Value.ToString() == textBoxSortWord_DAA.Text;
                         }
                     }
                     if (num == 4)
                     {
                         for (int i = 0; i < rows; i++)
                         {
-                            dataGridViewMas_DAA.Rows[i].Visible = dataGridViewMas_DAA[4, i].Value.ToString() == textBoxSearchWord_DAA.Text;
+                            dataGridViewMas_DAA.Rows[i].Visible = dataGridViewMas_DAA[4, i].Value.ToString() == textBoxSortWord_DAA.Text;
                         }
                     }
                     if (num == 5)
                     {
                         for (int i = 0; i < rows; i++)
                         {
-                            dataGridViewMas_DAA.Rows[i].Visible = dataGridViewMas_DAA[5, i].Value.ToString() == textBoxSearchWord_DAA.Text;
+                            dataGridViewMas_DAA.Rows[i].Visible = dataGridViewMas_DAA[5, i].Value.ToString() == textBoxSortWord_DAA.Text;
                         }
                     }
                     if (num == 6)
                     {
                         for (int i = 0; i < rows; i++)
                         {
-                            dataGridViewMas_DAA.Rows[i].Visible = dataGridViewMas_DAA[6, i].Value.ToString() == textBoxSearchWord_DAA.Text;
+                            dataGridViewMas_DAA.Rows[i].Visible = dataGridViewMas_DAA[6, i].Value.ToString() == textBoxSortWord_DAA.Text;
                         }
                     }
                     if (num == 7)
                     {
                         for (int i = 0; i < rows; i++)
                         {
-                            dataGridViewMas_DAA.Rows[i].Visible = dataGridViewMas_DAA[7, i].Value.ToString() == textBoxSearchWord_DAA.Text;
+                            dataGridViewMas_DAA.Rows[i].Visible = dataGridViewMas_DAA[7, i].Value.ToString() == textBoxSortWord_DAA.Text;
                         }
                     }
                 }
@@ -208,11 +218,126 @@ namespace Project.V2
             }
         }
 
-        private void buttonAddMarket_DAA_Click(object sender, EventArgs e)
+        // поиск
+        private void buttonSearch_DAA_Click_1(object sender, EventArgs e)
         {
+            try
+            {
+                string targetElement = Convert.ToString(textBoxSearch_DAA.Text);
 
+                string[] arrayValues = new string[columns];
+                arrayValues = ds.Search(LoadFromFileData(filePath: path), targetElement);
+
+                for (int i = 0; i < rows; i++)
+                {
+                    for (int j = 0; j < columns; j++)
+                    {
+                        dataGridViewRes_DAA.Rows[0].Cells[j].Value = arrayValues[j];
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Введены неверные данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        
+        // добавить строку
+        private void buttonAddRow_DAA_Click(object sender, EventArgs e)
+        {
+            this.dataGridViewMas_DAA.Rows.Add("", "", "", "", "", "", "");
+        }
+
+        // график
+        private void buttonGraf_DAA_Click(object sender, EventArgs e)
+        {
+            this.chartGraf_DAA.ChartAreas[0].AxisX.Title = "Магазин";
+            this.chartGraf_DAA.ChartAreas[0].AxisY.Title = "Оборот в млн руб.";
+
+            chartGraf_DAA.Series[0].Points.Clear();
+
+            for (int i = 0; i < rows; i++)
+            {
+                chartGraf_DAA.Series[0].Points.AddXY(dataGridViewMas_DAA.Rows[i].Cells[1].Value.ToString(), dataGridViewMas_DAA.Rows[i].Cells[5].Value.ToString());
+            }
+        }
+
+        // статистика
+        private void buttonStatRes_DAA_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string commandStat = Convert.ToString(comboBoxStatRes_DAA.Text);
+                int columnIndex = 6;
+
+                object[,] dataBase = new object[rows, columns];
+                dataBase = LoadFromFileData(filePath: path);
+
+                textBoxStatRes_DAA.Text = Convert.ToString(ds.DataStat(dataBase, commandStat, columnIndex));
+            }
+            catch
+            {
+                MessageBox.Show("Введены неверные данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // открытие форм
+        private void buttonAboutProgram_DAA_Click(object sender, EventArgs e)
+        {
+            FormAbout formAbout = new FormAbout();
+            formAbout.ShowDialog();
+        }
+
+        private void buttonHelp_DAA_Click(object sender, EventArgs e)
+        {
+            FormGuide formGuide = new FormGuide();
+            formGuide.ShowDialog();
+        }
+
+        // подсказки
+        private void buttonOpenFile_DAA_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipButton_DAA.ToolTipTitle = "Открыть файл";
+        }
+
+        private void buttonSaveFile_DAA_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipButton_DAA.ToolTipTitle = "Сохранить файл";
+        }
+
+        private void buttonAboutProgram_DAA_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipButton_DAA.ToolTipTitle = "Открыть информацию о разработчике";
+        }
+
+        private void buttonHelp_DAA_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipButton_DAA.ToolTipTitle = "Краткое руководство пользователя";
+        }
+
+        private void buttonSort_DAA_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipButton_DAA.ToolTipTitle = "Подсказка";
+        }
+
+        private void buttonSearch_DAA_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipButton_DAA.ToolTipTitle = "Подсказка";
+        }
+
+        private void buttonAddRow_DAA_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipButton_DAA.ToolTipTitle = "Подсказка";
+        }
+
+        private void buttonGraf_DAA_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipButton_DAA.ToolTipTitle = "Подсказка";
+        }
+
+        private void buttonStatRes_DAA_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipButton_DAA.ToolTipTitle = "Подсказка";
+        }
     }
 }
